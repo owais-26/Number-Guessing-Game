@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Number Guessing Game</title>
+    <link rel="icon" type="image/x-icon" href="istockphoto-842448020-612x612.jpg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleres.css">
+    <!-- <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script> -->
+
+  </head>
+
+  <body>
+    <header></header>
+    <div class="head1">
+      <h1 id="new">Number Guessing Game</h1>
+      <p>
+        You think you're too perfect at guessing numbers. Let's Guess Our
+        Computer Generated Number.
+      </p>
+    </div>
+    <div class="main">
+      <div class="head2">
+        <h2>Rules:</h2>
+        <ol>
+          <li>Number to be guessed will be between 0-100</li>
+          <li>Total Score is 100</li>
+          <li>Each Wrong Guess will result in -1 from your score</li>
+          <li>
+            Grading:
+
+            <ul style="list-style-type: disc">
+              <li>Score: 95-100: Excellent</li>
+              <li>Score: 90-95: Good</li>
+              <li>Score: 85-90: Average</li>
+            </ul>
+          </li>
+        </ol>
+        <div id="header">
+
+        </div>
+      </div>
+      <div class="head3">
+        <h2>
+          <span class="type"></span>
+        </h2>
+        <!-- <button id="generate" onclick="rand()">Generate A Number!</button> -->
+
+        
+        <div class="head4">
+         
+          <input id="num1" placeholder="Type Your Guess HERE" type="number" />
+          <br>
+          <button id="guess" onclick="guessed()">Check Your Guess!</button>
+          <button><a href="index.html">Play Again!</a></button>
+        </div>
+        <p class="paraend" id="message1"></p>
+        <p class="paraend" id="message2"></p>
+        <p class="paraend" id="message3"></p>
+        <p class="paraend" id="message4"></p>
+      </div>
+      
+     
+    </div>
+    <footer>
+      <div class="big">
+        <h2 id="con">Connect With Me</h2>
+        <p id="feel">Social Media Platforms</p>
+        <!-- <div></div> -->
+        <div class="contact">
+          <ul id="cont">
+            <li>
+              <a href="https://www.facebook.com/owais.ansari.9822/"
+                target="_blank"><img   class="img1"
+                  src="https://cdn-icons-png.flaticon.com/512/124/124010.png"
+                  alt=""></a></li>
+            <li><a href="https://www.instagram.com/owais._.26/"
+                target="_blank"><img  class="img1"
+                  src="https://image.shutterstock.com/image-photo/kiev-ukraine-may-14-2016-260nw-420838831.jpg"
+                  alt=""></a></li>
+
+
+
+            <li><a
+                href="https://www.linkedin.com/in/muhammad-owais-ansari-ba0694229/"
+                target="_blank"><img class="img1"
+                  src="https://images.unsplash.com/photo-1611944212129-29977ae1398c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGlua2VkaW4lMjBsb2dvfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+                  alt=""></a></li>
+            <li><a href="https://github.com/owais-26" target="_blank"><img class="img1"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzo1LOJew1gxSHmNAvipWbekkk7qDapJxAGWnDVm4Gnw&s"
+                  alt=""></a></li>
+            <!-- <li><a href="mailto:laibamohammadali@gmail.com" target="_blank"><img src="https://www.freepnglogos.com/uploads/logo-gmail-png/logo-gmail-png-gmail-icons-png-vector-icons-and-png-backgrounds-18.png" alt=""></a></li>  -->
+          </ul>
+        </div>
+      </footer>
+        <div class="center">
+          Copyright &copy; <a href="https://guessnum26.netlify.app/" >https://guessnum26.netlify.app/</a>  All rights reserved!
+          <br>
+          Credits: Owais Ansari
+  </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script>
+
+    
+let msg1 = document.getElementById("message1");
+
+let msg2 = document.getElementById("message2");
+let msg3 = document.getElementById("message3");
+let msg4 = document.getElementById("message4");
+
+let answer = Math.floor(Math.random() * 100) + 1;
+console.log(answer);
+let chance = 0;
+let guessed_num = [];
+function guessed() {
+  //   let guess = prompt("Enter a number");
+  num1 = document.getElementById("num1").value;
+  if (num1 < 1 || num1 > 100) {
+    alert("Please Enter a number Between 1 to 100");
+  } else {
+    guessed_num.push(num1);
+    chance += 1;
+    if (num1 < answer) {
+      msg1.textContent = "Your Guess is Too low";
+      msg2.textContent = "No. Of Guesses : " + chance;
+      msg3.textContent = "Guessed Number Are: " + guessed_num;
+      msg4.textContent = "Your Score is: " + (100 - chance);
+    } else if (num1 > answer) {
+      msg1.textContent = "Your Guess is Too High";
+      msg2.textContent = "No. Of Guesses : " + chance;
+      msg3.textContent = "Guessed Number Are: " + guessed_num;
+      msg4.textContent = "Your Score is: " + (100 - chance);
+    } else if (num1 == answer) {
+      msg1.textContent = "YAHHH YOU WON ITTT!!";
+      msg2.textContent = "The Number was " + answer;
+      msg3.textContent = " You guessed it in " + chance + " Guesses";
+      msg4.textContent = "Your Score is: " + (100 - chance+1);
+      if (chance<26) {
+        image()
+        
+      }
+      else{
+
+      }
+      
+
+    }
+  }
+}
+
+let typed = new Typed(".type", {
+  strings: ["I've Thought a Number. It's your Turn to Guess it.!"],
+  typeSpeed: 40,
+  // backSpeed: 50,
+  // loop:true
+});
+function image(){
+var img1 = document.createElement("img");
+img1.src = "https://www.pngitem.com/pimgs/m/36-360504_you-did-it-congratulations-congratulations-to-team-member.png";
+document.getElementById("header").appendChild(img1)
+img1.setAttribute("style", "text-align:center", "height:200px", "width:300px","margin:auto", "transition-duaration:0.3s");
+}
+</script>
+</html>
